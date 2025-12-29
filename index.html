@@ -1,1 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolucionaYA</title>
 
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#0f0f0f;
+    color:#ffffff;
+}
+header{
+    background:#111;
+    padding:20px;
+    text-align:center;
+}
+header h1{
+    margin:0;
+    color:#00ffcc;
+}
+header p{
+    color:#ccc;
+}
+.container{
+    padding:15px;
+}
+.card{
+    background:#1b1b1b;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+}
+.card h2{
+    margin-top:0;
+    color:#00ffcc;
+}
+button{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border:none;
+    border-radius:6px;
+    background:#00ffcc;
+    color:#000;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{
+    background:#00d9aa;
+}
+footer{
+    text-align:center;
+    padding:15px;
+    font-size:14px;
+    color:#777;
+}
+a{
+    display:block;
+    margin-top:10px;
+    color:#00ffcc;
+    text-decoration:none;
+}
+a:hover{
+    text-decoration:underline;
+}
+</style>
+
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<header>
+<h1>SolucionaYA</h1>
+<p>Documentos y textos listos para usar</p>
+</header>
+
+<div class="container">
+
+<!-- Secciones -->
+<div class="card">
+<h2>📄 Documentos</h2>
+<p>Cartas y documentos listos para editar.</p>
+<button onclick="seleccionarPaquete('Documentos')">Comprar desde $2</button>
+<button onclick="mostrarPago('Documentos')">Ver dirección de pago USDT</button>
+<a href="https://ejemplo.com/CartaGeneral.pdf" target="_blank">Descargar Carta General</a>
+</div>
+
+<div class="card">
+<h2>🌍 Traducciones</h2>
+<p>Español ↔ Inglés, textos claros.</p>
+<button onclick="seleccionarPaquete('Traducciones')">Comprar desde $4</button>
+<button onclick="mostrarPago('Traducciones')">Ver dirección de pago USDT</button>
+<a href="https://ejemplo.com/TraduccionCorta.pdf" target="_blank">Descargar Traducción ES→EN</a>
+</div>
+
+<div class="card">
+<h2>🧾 Migración</h2>
+<p>Cartas migratorias y explicativas.</p>
+<button onclick="seleccionarPaquete('Migración')">Comprar desde $5</button>
+<button onclick="mostrarPago('Migración')">Ver dirección de pago USDT</button>
+<a href="https://ejemplo.com/CartaMigratoria.pdf" target="_blank">Descargar Carta Migratoria</a>
+</div>
+
+<div class="card">
+<h2>📘 Currículum</h2>
+<p>CV listos para empleo o migración.</p>
+<button onclick="seleccionarPaquete('Currículum')">Comprar desde $6</button>
+<button onclick="mostrarPago('Currículum')">Ver dirección de pago USDT</button>
+<a href="https://ejemplo.com/CVBasico.pdf" target="_blank">Descargar Currículum Básico</a>
+</div>
+
+<div class="card">
+<h2>✍️ Textos laborales</h2>
+<p>Textos para conseguir trabajo.</p>
+<button onclick="seleccionarPaquete('Textos laborales')">Comprar desde $2</button>
+<button onclick="mostrarPago('Textos laborales')">Ver dirección de pago USDT</button>
+<a href="https://ejemplo.com/TextoWhatsApp.pdf" target="_blank">Descargar Texto WhatsApp</a>
+</div>
+
+<!-- Botón para compartir -->
+<div class="card">
+<h2>📢 Comparte la app</h2>
+<p>Haz que tus amigos también puedan usar SolucionaYA</p>
+<button onclick="compartirApp()">Compartir App</button>
+</div>
+
+</div>
+
+<footer>
+<p>Entrega rápida · Precios accesibles · Uso inmediato</p>
+</footer>
+
+<script>
+// Selección de paquete y WhatsApp
+function seleccionarPaquete(servicio){
+    let paquete = prompt(
+      "Selecciona paquete:\n1. Básico $2\n2. Estándar $4\n3. Urgente $6"
+    );
+    let nombrePaquete = paquete === "1" ? "Básico $2" :
+                        paquete === "2" ? "Estándar $4" :
+                        paquete === "3" ? "Urgente $6" : "Básico $2";
+    let mensaje = "Hola, quiero comprar: " + servicio + " (" + nombrePaquete + "). Vi la app SolucionaYA.";
+    let numero = "584141234567"; // 🔴 CAMBIA SOLO ESTE NÚMERO
+    let url = "https://api.whatsapp.com/send?phone=" + numero + "&text=" + encodeURIComponent(mensaje);
+    window.location.href = url;
+}
+
+// Mostrar direcciones USDT
+function mostrarPago(servicio){
+    let direcciones = {
+        "Documentos": "USDT 1: 0xb47fd5fA5d9Aac2526BF806948021643e9353daA\nUSDT 2: 0x7404489fdecd92509b9a99035883de743bc1d603",
+        "Traducciones": "USDT 1: 0xb47fd5fA5d9Aac2526BF806948021643e9353daA\nUSDT 2: 0x7404489fdecd92509b9a99035883de743bc1d603",
+        "Migración": "USDT 1: 0xb47fd5fA5d9Aac2526BF806948021643e9353daA\nUSDT 2: 0x7404489fdecd92509b9a99035883de743bc1d603",
+        "Currículum": "USDT 1: 0xb47fd5fA5d9Aac2526BF806948021643e9353daA\nUSDT 2: 0x7404489fdecd92509b9a99035883de743bc1d603",
+        "Textos laborales": "USDT 1: 0xb47fd5fA5d9Aac2526BF806948021643e9353daA\nUSDT 2: 0x7404489fdecd92509b9a99035883de743bc1d603"
+    };
+
+    alert("Servicio: " + servicio + "\nPaga aquí en USDT:\n" + direcciones[servicio] +
+          "\n\nDespués de pagar, envíame el comprobante por WhatsApp.");
+}
+
+// Compartir la app
+function compartirApp(){
+    let mensaje = "Mira esta app para documentos y traducciones listas: https://TU_ENLACE_AQUI";
+    let url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(mensaje);
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
